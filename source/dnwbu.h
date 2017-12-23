@@ -61,8 +61,16 @@ DN_DLL_EXPORT int SetWindowBlur7(const char* szWindowName);
 * \brief Blur for win10 windows.
 * \param szWindowName Name of the window.
 *
-* \return 0 If success.
+* \return 0 If success. 1 If user32.dll can't loaded. 2 If SetWindowCompositionAttribute function not found in user32.dll.
 */
 DN_DLL_EXPORT int SetWindowBlur10(const char* szWindowName);
+
+/**
+* \brief Automatically gets the windows version and blurs the window.
+* \param szWindowName Name of the window.
+*
+* \return 0 If success. 4 If Windows version not supported.
+*/
+DN_DLL_EXPORT int SetWindowBlur(const char* szWindowName);
 
 #endif

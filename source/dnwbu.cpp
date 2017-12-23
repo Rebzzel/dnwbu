@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include <dwmapi.h>
+#include <VersionHelpers.h>
 
 #include "dnwbu.h"
 
@@ -51,4 +52,16 @@ DN_DLL_EXPORT int SetWindowBlur10(const char* szWindowName)
 	FreeLibrary(hUser32);
 
 	return 0;
+}
+
+DN_DLL_EXPORT int SetWindowBlur(const char* szWindowName)
+{
+	if (IsWindows10OrGreater())
+	{
+		return SetWindowBlur10(szWindowName);
+	} else if (IsWindows7OrGreater) {
+		return SetWindowBlur7(szWindowName);
+	} else {
+		return 4;
+	}
 }
